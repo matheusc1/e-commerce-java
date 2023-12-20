@@ -45,13 +45,7 @@ public class Generic<T, ID> {
     T entityT = repository.findById(id).orElseThrow(() -> 
       new ResourceNotFoundException("Item com o id: " + id + " não encontrado"));
 
-    try {
-      Utils.copyNonNullProperties(entity, entityT);
-
-      entity.getClass().getMethod("setId", id.getClass()).invoke(entity, id);
-    } catch (Exception e) {
-      throw new RuntimeException("Erro ao copiar propriedades ou setar o id", e);
-    }
+    Utils.copyNonNullProperties(entity, entityT);
 
     return repository.save(entityT);
   }

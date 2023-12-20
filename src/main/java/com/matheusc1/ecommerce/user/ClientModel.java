@@ -43,7 +43,7 @@ public class ClientModel {
   @JsonManagedReference
   private List<AddressModel> addresses;
 
-  public void setCPF(String cpf) throws Exception {
+  public void setCpf(String cpf) throws Exception {
     if (cpf.length() != 11) {
       throw new ResourceBadRequestException("O cpf deve conter 11 caracteres");
     }
